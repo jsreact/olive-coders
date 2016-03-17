@@ -8,10 +8,10 @@ app.get('*', function (req, res) {
   res.sendFile(__dirname + '/index.html');
 });
 
-app.listen(3001, 'localhost', function (err) {
+app.listen(5000, 'localhost', function (err) {
   if (err) {
     console.error(err);
     return;
   }
-  console.log('Listening at http://localhost:3001');
+  console.log('Listening at http://localhost:5000');
 });

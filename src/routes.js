@@ -16,6 +16,8 @@ const App = ({ children }) => (
   </div>
 )
 
+
+
 // const Home = () => (<div>Home!</div>)
 const Foo = () => (<div>Foo!</div>)
 const Bar = () => (<div>Bar!</div>)

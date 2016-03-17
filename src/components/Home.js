@@ -1,9 +1,14 @@
 import React, { Component } from 'react'
+import SearchBar from './SearchBar'
+import Github from './Github'
 
 class Home extends Component {
   render () {
     return (
-      <div>HOMEEEE!</div>
+      <div>
+        <SearchBar />
+        <Github />
+      </div>
     )
   }
 }
