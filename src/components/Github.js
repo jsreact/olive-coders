@@ -2,7 +2,8 @@ import React, { PropTypes, Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
-import * as githubActions from '../actions/github'
+import SearchBar from './SearchBar'
+import * as githubActions from '../actions/githubActions'
 
 class Github extends Component {
 
@@ -12,10 +13,10 @@ class Github extends Component {
   // };
 
   render () {
-    console.log(this.props)
     return (
       <div>
-          <h1>Stargazers</h1>
+          <SearchBar {...this.props} />
+          <h1>GitHub User</h1>
 
       </div>
     )

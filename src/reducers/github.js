@@ -4,7 +4,7 @@ const initialState = {
 }
 
 export default function github(state = initialState, action) {
-  if(action.type === 'FETCH_USERS') {
+  if(action.type === 'FETCH_USER') {
     return { user: action.user }
   }
   else if(action.type === 'FETCH_REPO') {
