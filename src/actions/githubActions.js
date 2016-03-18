@@ -1,8 +1,13 @@
+import 'whatwg-fetch'
 
-export let fetchUser = (options) => {
-  return {
-    type: 'FETCH_USER',
-    user: options
+const GITHUB_API = 'https://api.github.com'
+
+export function fetchUser (options) {
+  const { username } = options
+// username is undefined??
+// learn more about destructuring
+  return (dispatch) => {
+
   }
 }
 
@@ -12,3 +17,4 @@ export let fetchRepo = (options) => {
     repo: options
   }
 }
+
