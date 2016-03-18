@@ -25,7 +25,7 @@ export let fetchRepo = (options) => {
 
 function processResponse (response) {
   let isOk = response.ok
-  console.log(response)
+  // console.log(response)
   return response.text()
   .then(body => {
     try { body = JSON.parse(body) }

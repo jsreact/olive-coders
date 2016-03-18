@@ -13,7 +13,7 @@ class SearchBar extends Component {
   }
 
   handleGoClick () {
-    this.props.actions.fetchUser(this.state.username)
+    this.props.actions.fetchUser(this.state)
   }
 
   render () {
