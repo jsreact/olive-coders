@@ -14,6 +14,7 @@ class SearchBar extends Component {
 
   handleGoClick () {
     this.props.actions.fetchUser(this.state)
+    this.props.actions.fetchRepos(this.state)
   }
 
   render () {
@@ -29,7 +30,7 @@ class SearchBar extends Component {
           <button
             type="submit"
             onClick={this.handleGoClick.bind(this)}>
-            Go!
+            User!
           </button>
         </form>
       </div>

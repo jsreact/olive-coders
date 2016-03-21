@@ -1,14 +1,14 @@
 const initialState = {
   user: {},
-  repo: {}
+  repos: []
 }
 
 export default function github(state = initialState, action) {
   if(action.type === 'FETCH_USER') {
-    return { user: action.user }
+    return { ...state, user: action.user }
   }
-  else if(action.type === 'FETCH_REPO') {
-    return { repo: action.repo }
+  else if(action.type === 'FETCH_REPOS') {
+    return { ...state, repos: action.repos }
   }
   return state
 }

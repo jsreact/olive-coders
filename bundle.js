@@ -26642,10 +26642,13 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
+
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 	exports.default = github;
 	var initialState = {
 	  user: {},
-	  repo: {}
+	  repos: []
 	};
 
 	function github() {
@@ -26653,9 +26656,9 @@
 	  var action = arguments[1];
 
 	  if (action.type === 'FETCH_USER') {
-	    return { user: action.user };
-	  } else if (action.type === 'FETCH_REPO') {
-	    return { repo: action.repo };
+	    return _extends({}, state, { user: action.user });
+	  } else if (action.type === 'FETCH_REPOS') {
+	    return _extends({}, state, { repos: action.repos });
 	  }
 	  return state;
 	}
@@ -26950,6 +26953,7 @@
 	    key: 'handleGoClick',
 	    value: function handleGoClick() {
 	      this.props.actions.fetchUser(this.state);
+	      this.props.actions.fetchRepos(this.state);
 	    }
 	  }, {
 	    key: 'render',
@@ -26973,7 +26977,7 @@
 	            {
 	              type: 'submit',
 	              onClick: this.handleGoClick.bind(this) },
-	            'Go!'
+	            'User!'
 	          )
 	        )
 	      );
@@ -27019,11 +27023,19 @@
 	  }
 
 	  _createClass(GithubUser, [{
+	    key: 'reposBySize',
+	    value: function reposBySize() {
+	      this.props.github.repos.forEach(function (currVal) {
+	        console.log(currVal.name);
+	      });
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
+	      console.log(this.props);
 	      var _props$github = this.props.github;
 	      var user = _props$github.user;
-	      var repo = _props$github.repo;
+	      var repos = _props$github.repos;
 	      // practicing ES6 destructuring!
 
 	      if (user.name) {
@@ -27041,7 +27053,12 @@
 	            user.location
 	          ),
 	          _react2.default.createElement('img', { src: user.avatar_url, width: '144', height: '144',
-	            style: { borderRadius: '200px' } })
+	            style: { borderRadius: '200px' } }),
+	          _react2.default.createElement(
+	            'div',
+	            null,
+	            this.reposBySize.call(this)
+	          )
 	        );
 	      } else {
 	        return _react2.default.createElement(
@@ -27067,8 +27084,8 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	exports.fetchRepo = undefined;
 	exports.fetchUser = fetchUser;
+	exports.fetchRepos = fetchRepos;
 
 	__webpack_require__(253);
 
@@ -27090,16 +27107,24 @@
 	  };
 	}
 
-	var fetchRepo = exports.fetchRepo = function fetchRepo(options) {
-	  return {
-	    type: 'FETCH_REPO',
-	    repo: options
+	function fetchRepos(options) {
+	  var username = options.username;
+
+
+	  return function (dispatch) {
+	    fetch(GITHUB_API + '/users/' + username + '/repos').then(processResponse).then(function (res) {
+	      return dispatch({
+	        type: 'FETCH_REPOS',
+	        repos: res
+	      });
+	    }).catch(function (error) {
+	      return console.log(error);
+	    });
 	  };
-	};
+	}
 
 	function processResponse(response) {
 	  var isOk = response.ok;
-	  // console.log(response)
 	  return response.text().then(function (body) {
 	    try {
 	      body = JSON.parse(body);

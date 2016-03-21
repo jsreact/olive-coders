@@ -16,16 +16,22 @@ export function fetchUser (options) {
   }
 }
 
-export let fetchRepo = (options) => {
-  return {
-    type: 'FETCH_REPO',
-    repo: options
+export function fetchRepos (options) {
+  const { username } = options
+
+  return (dispatch) => {
+    fetch(`${GITHUB_API}/users/${username}/repos`)
+    .then(processResponse)
+    .then(res => dispatch({
+      type: 'FETCH_REPOS',
+      repos: res
+    }))
+    .catch(error => console.log(error))
   }
 }
 
 function processResponse (response) {
   let isOk = response.ok
-  // console.log(response)
   return response.text()
   .then(body => {
     try { body = JSON.parse(body) }
