@@ -7,7 +7,6 @@ class GithubUser extends Component {
     })
   }
   render () {
-    console.log(this.props)
     const { github: { user, repos } } = this.props
     // practicing ES6 destructuring!
     if (user.name) {

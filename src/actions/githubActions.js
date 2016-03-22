@@ -12,7 +12,7 @@ export function fetchUser (options) {
       type: 'FETCH_USER',
       user: res
     }))
-    .catch(error => console.log(error))
+    .catch(error => handleResponseError(dispatch, error))
   }
 }
 
@@ -26,10 +26,10 @@ export function fetchRepos (options) {
       type: 'FETCH_REPOS',
       repos: res
     }))
-    .catch(error => console.log(error))
+    .catch(error => handleResponseError(dispatch, error))
   }
 }
-
+// helper functions
 function processResponse (response) {
   let isOk = response.ok
   return response.text()
@@ -41,4 +41,13 @@ function processResponse (response) {
 
     throw { body, statusCode: response.status }
   })
+}
+
+function handleResponseError (dispatch, error) {
+  if (error.statusCode > 400) {
+    return dispatch({
+      type: 'DISPLAY_ERROR',
+      payload: error
+    })
+  }
 }
