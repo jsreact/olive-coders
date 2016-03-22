@@ -23,12 +23,14 @@ class SearchBar extends Component {
         <form onSubmit={e => e.preventDefault()}>
           <input
             type='text'
+            className='input-rounded'
             size='45'
             placeholder='&#xf002; Search GitHub User'
             onChange={this.handleSearch.bind(this)}
             value={this.state.username} />
           <button
-            type="submit"
+            type='submit'
+            className='button'
             onClick={this.handleGoClick.bind(this)}>
             User!
           </button>

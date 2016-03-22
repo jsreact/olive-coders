@@ -26968,6 +26968,7 @@
 	            } },
 	          _react2.default.createElement('input', {
 	            type: 'text',
+	            className: 'input-rounded',
 	            size: '45',
 	            placeholder: ' Search GitHub User',
 	            onChange: this.handleSearch.bind(this),
@@ -26976,6 +26977,7 @@
 	            'button',
 	            {
 	              type: 'submit',
+	              className: 'button',
 	              onClick: this.handleGoClick.bind(this) },
 	            'User!'
 	          )
