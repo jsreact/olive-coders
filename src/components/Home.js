@@ -4,7 +4,7 @@ import Github from './Github'
 class Home extends Component {
   render () {
     return (
-      <div>
+      <div className="main-content">
         <Github />
       </div>
     )

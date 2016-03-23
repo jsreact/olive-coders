@@ -11,7 +11,7 @@ class Github extends Component {
 
   render () {
     return (
-      <div>
+      <div className='github-container'>
           <SearchBar {...this.props} />
           <DisplayError />
           <h1>GitHub User</h1>

@@ -1,0 +1,58 @@
+p {
+  font-family: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Verdana, sans-serif;
+  color: #555;
+  text-align: center;
+}
+
+h1 {
+  font-family: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Verdana, sans-serif;
+  color: #555;
+  text-align: center;
+}
+
+html {}
+
+a:link, a:visited {
+  font-family: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Verdana, sans-serif;
+  text-decoration: none;
+  color: #555;
+}
+
+div.navigation {
+
+}
+
+div.main-content {
+
+}
+
+div.github-container {
+
+
+}
+
+div.piechart {
+  text-align: center;
+}
+
+img.github-image {
+  border-radius: 200px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 144px;
+  height: 144px;
+}
+
+div.searchbar-container {
+  text-align: center;
+}
+
+input {
+  margin-top: 2px;
+  border: 1px solid #CCC;
+  border-radius: 3px;
+  padding: 5px;
+  width: 50%;
+}
+

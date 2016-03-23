@@ -19,20 +19,18 @@ class SearchBar extends Component {
 
   render () {
     return (
-      <div>
+      <div className='searchbar-container'>
         <form onSubmit={e => e.preventDefault()}>
           <input
             type='text'
-            className='input-rounded'
             size='45'
-            placeholder='&#xf002; Search GitHub User'
+            placeholder='GitHub username'
             onChange={this.handleSearch.bind(this)}
             value={this.state.username} />
           <button
             type='submit'
-            className='button'
             onClick={this.handleGoClick.bind(this)}>
-            User!
+            Search
           </button>
         </form>
       </div>

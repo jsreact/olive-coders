@@ -19,11 +19,10 @@ class GithubUser extends Component {
     if (user.name) {
       return (
         <div>
-          <div>{user.name}</div>
-          <div>{user.location}</div>
-          <img src={user.avatar_url} width='144' height='144'
-              style={{ borderRadius: '200px' }} />
-          <div>
+          <p>{user.name}</p>
+          <p>{user.location}</p>
+          <img src={user.avatar_url} className='github-image' />
+          <div className='piechart'>
             <PieChart
               data={pieData}
               width={500}
@@ -37,7 +36,7 @@ class GithubUser extends Component {
       )
     } else {
       return (
-        <div>Looking for someone?</div>
+        <p>Looking for someone?</p>
       )
     }
   }
