@@ -17,6 +17,9 @@ module.exports = {
         loaders: ['react-hot', 'babel?' + JSON.stringify({ presets: ['react', 'es2015' ], plugins: ['syntax-object-rest-spread'] })],
         exclude: /node_modules/,
       },
+      {
+        test: /\.css$/, loader: "style-loader!css-loader"
+      }
     ]
   },
   devServer: {

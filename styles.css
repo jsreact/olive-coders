@@ -12,14 +12,29 @@ h1 {
 
 html {}
 
-a:link, a:visited {
-  font-family: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Verdana, sans-serif;
-  text-decoration: none;
-  color: #555;
+div.navigation-bar {
+
 }
 
-div.navigation {
+ul.nav {
+  list-style-type: none;
+  background-color: gray;
+  padding: 20px 20px;
+}
 
+li {
+  display: inline;
+}
+
+li a:link, a:visited {
+  font-family: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Verdana, sans-serif;
+  padding: 8px;
+  text-decoration: none;
+  color: #fff;
+}
+
+li a:hover {
+  color: #555;
 }
 
 div.main-content {
