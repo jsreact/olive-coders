@@ -1,18 +1,25 @@
 module.exports = {
-  entry: './src/index.js',
+  entry: {
+    main: [
+      './src/index.js',
+      'webpack-dev-server/client?http://localhost:5000',
+      'webpack/hot/only-dev-server'
+    ]
+  },
   output: {
+    publicPath: 'http://localhost:5000/',
     filename: 'bundle.js'
   },
   module: {
     loaders: [
-      { test: /\.js?$/,
-        loader: 'babel-loader',
+      {
+        test: /\.js$/,
+        loaders: ['react-hot', 'babel?' + JSON.stringify({ presets: ['react', 'es2015' ], plugins: ['syntax-object-rest-spread'] })],
         exclude: /node_modules/,
-        query: {
-          presets: ['es2015', 'react'],
-          plugins: ['syntax-object-rest-spread']
-        }
-      }
+      },
     ]
+  },
+  devServer: {
+    port: 5000,
   }
 }

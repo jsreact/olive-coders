@@ -5,6 +5,5 @@
 Get started:
 ```javascript
 npm install
-webpack
 npm start
 ```
