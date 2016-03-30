@@ -6,6 +6,7 @@ const PieChart = rd3.PieChart
 class GithubUser extends Component {
   reposByStars () {
     // data for d3 chart
+    // filter out repos that have stars
     let data = this.props.github.repos.filter(function (repo, index) {
       return repo.stargazers_count > 0
     }).map(function(repo, index) {
@@ -14,12 +15,14 @@ class GithubUser extends Component {
     return data
   }
   render () {
+    const { github } = this.props
     const { github: { user, repos } } = this.props
-
     const pieData = this.reposByStars()
+
     if (user.name) {
       return (
         <div>
+          {github.isFetchingUser && <h2>Loading...</h2>}
           <div className='github-info'>
             <p>{user.name}</p>
             <p>{user.location}</p>

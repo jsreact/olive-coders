@@ -2,29 +2,36 @@ import 'whatwg-fetch'
 
 const GITHUB_API = 'https://api.github.com'
 
-export function fetchUser (options) {
-  const { username } = options
-
-  return (dispatch) => {
-    fetch(`${GITHUB_API}/users/${username}`)
-    .then(processResponse)
-    .then(res => dispatch({
-      type: 'FETCH_USER',
-      user: res
-    }))
-    .catch(error => handleResponseError(dispatch, error))
+function receiveUser (name, json) {
+  return {
+    type: 'RECEIVE_USER',
+    user: json
   }
 }
 
-export function fetchRepos (options) {
-  const { username } = options
+function requestUser () {
+  return {
+    type: 'REQUEST_USER',
+  }
+}
 
+export function fetchUser ({username}) {
   return (dispatch) => {
-    fetch(`${GITHUB_API}/users/${username}/repos`)
+    dispatch(requestUser(username))
+    return fetch(`${GITHUB_API}/users/${username}`)
+      .then(processResponse)
+      .then(json => dispatch(receiveUser(username, json)))
+      .catch(error => handleResponseError(dispatch, error))
+  }
+}
+
+export function fetchRepos ({username}) {
+  return (dispatch) => {
+    return fetch(`${GITHUB_API}/users/${username}/repos`)
     .then(processResponse)
-    .then(res => dispatch({
+    .then(json => dispatch({
       type: 'FETCH_REPOS',
-      repos: res
+      repos: json
     }))
     .catch(error => handleResponseError(dispatch, error))
   }

@@ -4,11 +4,17 @@ const initialState = {
 }
 
 export default function github(state = initialState, action) {
-  if(action.type === 'FETCH_USER') {
-    return { ...state, user: action.user }
+  switch (action.type) {
+    case 'REQUEST_USER':
+      return { ...state, isFetchingUser: true }
+    case 'RECEIVE_USER': {
+      return {
+        ...state,
+        isFetchingUser: false,
+        user: action.user
+      }
+    }
+    default:
+      return state
   }
-  else if(action.type === 'FETCH_REPOS') {
-    return { ...state, repos: action.repos }
-  }
-  return state
 }

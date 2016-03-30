@@ -13,8 +13,11 @@ class SearchBar extends Component {
   }
 
   handleGoClick () {
-    this.props.actions.fetchUser(this.state)
-    this.props.actions.fetchRepos(this.state)
+    if (!this.props.github.isFetchingUser) {
+    // only fetch when fetching flag is false
+      this.props.actions.fetchUser(this.state)
+      this.props.actions.fetchRepos(this.state)
+    }
   }
 
   render () {
