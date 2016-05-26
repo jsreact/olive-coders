@@ -7,3 +7,6 @@ Get started:
 npm install
 npm start
 ```
+
+Direct your browser to
+`http://localhost:5000/`
